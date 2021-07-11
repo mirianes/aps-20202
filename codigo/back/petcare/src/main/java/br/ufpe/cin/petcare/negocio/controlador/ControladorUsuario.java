@@ -19,7 +19,7 @@ public class ControladorUsuario {
 
     public String login(String email, String senha) throws Exception {
         String token = "";
-        List<Usuario> usuarios = this.cadastroUsuario.buscarPeloEmail(email);
+        List<Usuario> usuarios = this.cadastroUsuario.buscar(email);
 
         if (usuarios.size() == 0) {
             throw new Exception("Não existe um usuário com o e-mail informado.");
@@ -35,5 +35,9 @@ public class ControladorUsuario {
         }
 
         return token;
+    }
+
+    public Usuario buscar(Long id) {
+        return this.cadastroUsuario.buscar(id);
     }
 }

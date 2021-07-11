@@ -26,6 +26,8 @@ public class Pet {
 		this.setTutor(tutor);
 	}
 
+	public Pet() {}
+
 	public String getNome() {
 		return nome;
 	}

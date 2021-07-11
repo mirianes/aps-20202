@@ -15,7 +15,11 @@ public class CadastroUsuario {
         return this.repositorioUsuarios.inserir(usuario);
     }
 
-    public List<Usuario> buscarPeloEmail(String email) {
-        return this.repositorioUsuarios.buscarPeloEmail(email);
+    public List<Usuario> buscar(String email) {
+        return this.repositorioUsuarios.buscar(email);
+    }
+
+    public Usuario buscar(Long id) {
+        return this.repositorioUsuarios.buscar(id);
     }
 }
