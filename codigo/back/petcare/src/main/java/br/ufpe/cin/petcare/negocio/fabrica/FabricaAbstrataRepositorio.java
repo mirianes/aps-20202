@@ -3,6 +3,7 @@ package br.ufpe.cin.petcare.negocio.fabrica;
 import org.springframework.context.ApplicationContext;
 
 import br.ufpe.cin.petcare.dados.repositorio.atendimento.InterfaceRepositorioAtendimentos;
+import br.ufpe.cin.petcare.dados.repositorio.comanda.InterfaceRepositorioComandas;
 import br.ufpe.cin.petcare.dados.repositorio.medico.InterfaceRepositorioMedicos;
 import br.ufpe.cin.petcare.dados.repositorio.pet.InterfaceRepositorioPets;
 import br.ufpe.cin.petcare.dados.repositorio.procedimento.InterfaceRepositorioProcedimentos;
@@ -14,4 +15,5 @@ public interface FabricaAbstrataRepositorio {
     InterfaceRepositorioAtendimentos criarRepositorioAtendimentos(ApplicationContext context);
     InterfaceRepositorioProcedimentos criarRepositorioProcedimentos(ApplicationContext context);
     InterfaceRepositorioMedicos criarRepositorioMedicos(ApplicationContext context);
+    InterfaceRepositorioComandas criarRepositorioComandas(ApplicationContext context);
 }

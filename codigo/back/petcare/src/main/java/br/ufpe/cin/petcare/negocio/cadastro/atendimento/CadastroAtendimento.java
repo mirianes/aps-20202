@@ -18,4 +18,8 @@ public class CadastroAtendimento {
 	public List<Atendimento> listar(String nomePet) {
 		return this.repositorioAtendimentos.listar(nomePet);
 	}
+
+	public List<Atendimento> listar(List<Long> IDs) {
+		return this.repositorioAtendimentos.listar(IDs);
+	}
 }

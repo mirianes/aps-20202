@@ -12,6 +12,6 @@ public class RepositorioComandasBDR implements InterfaceRepositorioComandas {
 
 	@Override
 	public Comanda inserir(Comanda comanda) {
-		return comandaDAO.save(comanda);
+		return this.comandaDAO.save(comanda);
 	}
 }

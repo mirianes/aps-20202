@@ -11,6 +11,6 @@ import br.ufpe.cin.petcare.negocio.cadastro.atendimento.Atendimento;
 
 @Repository
 public interface AtendimentoDAO extends JpaRepository<Atendimento, Long>{
-    @Query("SELECT a FROM Atendimento a INNER JOIN Pet p ON p.id = a.pet WHERE p.nome = :nomePet")
+    @Query("SELECT a FROM Atendimento a INNER JOIN Pet p ON p.id = a.pet WHERE p.nome = :nomePet AND a.pago = false")
     List<Atendimento> listar(@Param("nomePet") String nomePet);
 }

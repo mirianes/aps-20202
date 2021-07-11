@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 
 import br.ufpe.cin.petcare.dados.repositorio.atendimento.InterfaceRepositorioAtendimentos;
+import br.ufpe.cin.petcare.dados.repositorio.comanda.InterfaceRepositorioComandas;
 import br.ufpe.cin.petcare.dados.repositorio.medico.InterfaceRepositorioMedicos;
 import br.ufpe.cin.petcare.dados.repositorio.pet.InterfaceRepositorioPets;
 import br.ufpe.cin.petcare.dados.repositorio.procedimento.InterfaceRepositorioProcedimentos;
 import br.ufpe.cin.petcare.dados.repositorio.usuario.InterfaceRepositorioUsuarios;
 import br.ufpe.cin.petcare.negocio.cadastro.atendimento.Atendimento;
 import br.ufpe.cin.petcare.negocio.cadastro.atendimento.CadastroAtendimento;
+import br.ufpe.cin.petcare.negocio.cadastro.comanda.CadastroComanda;
+import br.ufpe.cin.petcare.negocio.cadastro.comanda.Comanda;
 import br.ufpe.cin.petcare.negocio.cadastro.medico.CadastroMedico;
 import br.ufpe.cin.petcare.negocio.cadastro.medico.Medico;
 import br.ufpe.cin.petcare.negocio.cadastro.pet.CadastroPet;
@@ -56,8 +59,12 @@ public class Fachada {
         CadastroAtendimento cadastroAtendimento = new CadastroAtendimento(repositorioAtendimentos);
         this.controladorAtendimento = new ControladorAtendimento(cadastroAtendimento);
 
+        // Comanda
+        InterfaceRepositorioComandas repositorioComandas = fabrica.criarRepositorioComandas(context);
+        CadastroComanda cadastroComanda = new CadastroComanda(repositorioComandas);
+
         // Gerar Comanda
-        this.controladorGerarComanda = new ControladorGerarComanda(cadastroAtendimento);
+        this.controladorGerarComanda = new ControladorGerarComanda(cadastroAtendimento, cadastroComanda);
 
         // Procedimentos
         InterfaceRepositorioProcedimentos repositorioProcedimentos = fabrica.criarRepositorioProcedimentos(context);
@@ -123,6 +130,18 @@ public class Fachada {
             throw new Exception("Token inválido.");
         } else {
             return this.controladorGerarComanda.listarAtendimentos(nomePet);
+        }
+    }
+
+    public List<Atendimento> listarAtendimentos(List<Long> IDs) {
+        return this.controladorAtendimento.listar(IDs);
+    }
+
+    public Comanda inserirComanda(String token, Comanda comanda) throws Exception {
+        if (token.equals("")) {
+            throw new Exception("Token inválido.");
+        } else {
+            return this.controladorGerarComanda.inserirComanda(comanda);
         }
     }
 

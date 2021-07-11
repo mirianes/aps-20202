@@ -9,7 +9,6 @@ import br.ufpe.cin.petcare.negocio.cadastro.atendimento.Atendimento;
 
 @Component
 public class RepositorioAtendimentosBDR implements InterfaceRepositorioAtendimentos{
-	
 	@Autowired
 	private AtendimentoDAO atendimentoDAO;
 	
@@ -21,5 +20,10 @@ public class RepositorioAtendimentosBDR implements InterfaceRepositorioAtendimen
 	@Override
 	public List<Atendimento> listar(String nomePet) {
 		return this.atendimentoDAO.listar(nomePet);
+	}
+
+	@Override
+	public List<Atendimento> listar(List<Long> IDs) {
+		return this.atendimentoDAO.findAllById(IDs);
 	}
 }
