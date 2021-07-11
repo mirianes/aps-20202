@@ -16,6 +16,8 @@ public class Especialidade {
 		this.setNome(nome);
 	}
 
+	public Especialidade() {}
+
 	public String getNome() {
 		return nome;
 	}

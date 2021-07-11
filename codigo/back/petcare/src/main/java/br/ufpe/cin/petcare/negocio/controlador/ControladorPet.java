@@ -19,4 +19,8 @@ public class ControladorPet {
 	public List<Pet> buscar(String nome) {
 		return this.cadastroPet.buscar(nome);
 	}
+
+	public Pet buscar(Long ID) {
+		return this.cadastroPet.buscar(ID);
+	}
 }

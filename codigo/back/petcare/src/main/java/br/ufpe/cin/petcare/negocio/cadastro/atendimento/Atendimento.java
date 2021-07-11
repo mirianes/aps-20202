@@ -1,12 +1,14 @@
 package br.ufpe.cin.petcare.negocio.cadastro.atendimento;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import br.ufpe.cin.petcare.negocio.cadastro.medico.Medico;
 import br.ufpe.cin.petcare.negocio.cadastro.pet.Pet;
@@ -17,16 +19,17 @@ public class Atendimento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long ID;
-	@ManyToOne
+	@OneToOne
 	private Pet pet;
-	private Procedimento[] procedimentos;
-	@ManyToOne
+	@ManyToMany
+	private List<Procedimento> procedimentos;
+	@OneToOne
 	private Medico veterinario;
 	private Date dataAtendimento;
 	private boolean pago;
 	private double valor;
 	
-	public Atendimento(Pet pet, Procedimento[] procedimentos, Medico veterinario, Date dataAtendimento, boolean pago, double valor) {
+	public Atendimento(Pet pet, List<Procedimento> procedimentos, Medico veterinario, Date dataAtendimento, boolean pago, double valor) {
 		this.pet = pet;
 		this.procedimentos = procedimentos;
 		this.veterinario = veterinario;
@@ -35,6 +38,8 @@ public class Atendimento {
 		this.valor = valor;
 	}
 	
+	public Atendimento() {}
+
 	public Long getID() {
 		return ID;
 	}
@@ -51,11 +56,11 @@ public class Atendimento {
 		this.pet = pet;
 	}
 	
-	public Procedimento[] getProcedimentos() {
+	public List<Procedimento> getProcedimentos() {
 		return procedimentos;
 	}
 	
-	public void setProcedimentos(Procedimento[] procedimentos) {
+	public void setProcedimentos(List<Procedimento> procedimentos) {
 		this.procedimentos = procedimentos;
 	}
 	

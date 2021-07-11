@@ -18,4 +18,8 @@ public class CadastroPet {
 	public List<Pet> buscar(String nome) {
 		return this.repositorioPets.buscar(nome);
 	}
+
+	public Pet buscar(Long ID) {
+		return this.repositorioPets.buscar(ID);
+	}
 }

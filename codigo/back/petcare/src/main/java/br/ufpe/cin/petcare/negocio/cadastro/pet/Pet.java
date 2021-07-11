@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import br.ufpe.cin.petcare.negocio.cadastro.usuario.Usuario;
 
@@ -17,7 +17,7 @@ public class Pet {
 	private Long ID;
 	private String nome;
 	private Date dataNascimento;
-	@ManyToOne
+	@OneToOne
 	private Usuario tutor;
 	
 	public Pet(String nome, Date dataNascimento, Usuario tutor) {

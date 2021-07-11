@@ -1,8 +1,13 @@
 package br.ufpe.cin.petcare.negocio.cadastro.medico;
 
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import br.ufpe.cin.petcare.negocio.cadastro.especialidade.Especialidade;
+import br.ufpe.cin.petcare.negocio.cadastro.usuario.Usuario;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +17,20 @@ import javax.persistence.GenerationType;
 public class Medico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long Id;
+	private Long ID;
 	private String crm;
-	private Especialidade[] especialidades;
+	@OneToMany
+	private List<Especialidade> especialidades;
+	@OneToOne
+	private Usuario usuario;
 	
-	public Medico(String crm, Especialidade[] especialidades) {
-		this.setCrm(crm);
-		this.setEspecialidades(especialidades);
+	public Medico(String crm, List<Especialidade> especialidades, Usuario usuario) {
+		this.crm = crm;
+		this.especialidades = especialidades;
+		this.usuario = usuario;
 	}
+
+	public Medico() {}
 
 	public String getCrm() {
 		return crm;
@@ -29,11 +40,19 @@ public class Medico {
 		this.crm = crm;
 	}
 
-	public Especialidade[] getEspecialidades() {
+	public List<Especialidade> getEspecialidades() {
 		return especialidades;
 	}
 
-	public void setEspecialidades(Especialidade[] especialidades) {
+	public void setEspecialidades(List<Especialidade> especialidades) {
 		this.especialidades = especialidades;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

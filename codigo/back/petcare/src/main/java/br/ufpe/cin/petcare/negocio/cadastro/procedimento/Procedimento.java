@@ -16,11 +16,13 @@ public class Procedimento {
 		this.protocolo = protocolo;
 	}
 
-	public String getNome() {
+	public Procedimento() {}
+
+	public String getProtocolo() {
 		return protocolo;
 	}
 
-	public void setNome(String protocolo) {
+	public void setProtocolo(String protocolo) {
 		this.protocolo = protocolo;
 	}
 }
