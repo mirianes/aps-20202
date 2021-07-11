@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import br.ufpe.cin.petcare.negocio.cadastro.atendimento.Atendimento;
 import br.ufpe.cin.petcare.negocio.cadastro.pet.Pet;
@@ -17,7 +18,9 @@ public class Comanda {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long Id;
 	private String numero;
+	@ManyToOne
 	private Usuario tutor;
+	@ManyToOne
 	private Pet pet;
 	private Atendimento[] atendimentos;
 	private double totalValue;

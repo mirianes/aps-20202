@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import br.ufpe.cin.petcare.negocio.cadastro.usuario.Usuario;
 
@@ -16,6 +17,7 @@ public class Pet {
 	private Long ID;
 	private String nome;
 	private Date dataNascimento;
+	@ManyToOne
 	private Usuario tutor;
 	
 	public Pet(String nome, Date dataNascimento, Usuario tutor) {
@@ -27,21 +29,21 @@ public class Pet {
 	public String getNome() {
 		return nome;
 	}
+	
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public Usuario getTutor() {
+		return tutor;
+	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public Usuario getTutor() {
-		return tutor;
 	}
 
 	public void setTutor(Usuario tutor) {
