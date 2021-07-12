@@ -1,5 +1,7 @@
 package br.ufpe.cin.petcare.negocio.cadastro.comanda;
 
+import java.util.List;
+
 import br.ufpe.cin.petcare.dados.repositorio.comanda.InterfaceRepositorioComandas;
 
 public class CadastroComanda {
@@ -11,5 +13,13 @@ public class CadastroComanda {
 	
 	public Comanda inserir(Comanda comanda) {
 		return this.repositorioComandas.inserir(comanda);
+	}
+
+	public List<Comanda> buscarComandasPeloPetId(Long petId) {
+		return this.repositorioComandas.buscarComandasPeloPetId(petId);
+	}
+
+	public void encerrarComanda(Long id) {
+		this.repositorioComandas.encerrarComanda(id);
 	}
 }

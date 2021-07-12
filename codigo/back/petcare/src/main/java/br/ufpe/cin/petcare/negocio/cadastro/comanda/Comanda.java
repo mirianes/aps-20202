@@ -42,6 +42,8 @@ public class Comanda {
 		this.encerrada = encerrada;
 	}
 
+	public Comanda() {}
+
 	public Long getId() {
 		return Id;
 	}

@@ -24,6 +24,7 @@ import br.ufpe.cin.petcare.negocio.cadastro.usuario.CadastroUsuario;
 
 import br.ufpe.cin.petcare.negocio.cadastro.usuario.Usuario;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorAtendimento;
+import br.ufpe.cin.petcare.negocio.controlador.ControladorComanda;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorGerarComanda;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorMedico;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorPet;
@@ -39,6 +40,7 @@ public class Fachada {
     private ControladorGerarComanda controladorGerarComanda;
     private ControladorProcedimento controladorProcedimento;
     private ControladorMedico controladorMedico;
+    private ControladorComanda controladorComanda;
 
     private Fachada(ApplicationContext context) {
         // Fábrica
@@ -75,6 +77,9 @@ public class Fachada {
         InterfaceRepositorioMedicos repositorioMedicos = fabrica.criarRepositorioMedicos(context);
         CadastroMedico cadastroMedico = new CadastroMedico(repositorioMedicos);
         this.controladorMedico = new ControladorMedico(cadastroMedico);
+
+        // Comanda
+        this.controladorComanda = new ControladorComanda(cadastroComanda);
     }
 
     public static Fachada getInstance(ApplicationContext context) {
@@ -151,5 +156,13 @@ public class Fachada {
 
     public Medico buscarMedico(Long ID) {
         return this.controladorMedico.buscar(ID);
+    }
+
+    public List<Comanda> buscarComandasPeloPetId(Long petId) {
+        return this.controladorComanda.buscarComandasPeloPetId(petId);
+    }
+
+    public void encerrarComanda(Long Id) {
+        this.controladorComanda.encerrarComanda(Id);
     }
 }
