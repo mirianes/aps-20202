@@ -67,4 +67,9 @@ public class Pagamento {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
+	@Override
+	public String toString() {
+		return "{valor: "+valor+", numeroParcelas: "+numeroParcelas+"}";
+	}
 }

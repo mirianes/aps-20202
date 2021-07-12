@@ -7,6 +7,10 @@ public class InserirPagamentoBody {
     private int numeroParcelas;
     private double valor;
     private Long comandaId;
+    private String numeroCartao;
+    private String validadeCartao;
+    private int codigoCartao;
+    private String nomeTitular;
 
     public Date getData() {
         return data;
@@ -22,5 +26,21 @@ public class InserirPagamentoBody {
 
     public Long getComandaId() {
         return comandaId;
+    }
+
+    public String getNumeroCartao() {
+        return numeroCartao;
+    }
+
+    public String getValidadeCartao() {
+        return validadeCartao;
+    }
+
+    public int getCodigoCartao() {
+        return codigoCartao;
+    }
+
+    public String getNomeTitular() {
+        return nomeTitular;
     }
 }
