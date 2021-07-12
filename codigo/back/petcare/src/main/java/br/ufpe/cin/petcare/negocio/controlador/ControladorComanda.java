@@ -23,4 +23,8 @@ public class ControladorComanda {
     public void encerrarComanda(Long Id) {
         this.cadastroComanda.encerrarComanda(Id);
     }
+
+	public Comanda buscarComanda(Long id) {
+		return this.cadastroComanda.buscarComanda(id);
+	}
 }

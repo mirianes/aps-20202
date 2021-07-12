@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import br.ufpe.cin.petcare.dados.repositorio.atendimento.InterfaceRepositorioAtendimentos;
 import br.ufpe.cin.petcare.dados.repositorio.comanda.InterfaceRepositorioComandas;
 import br.ufpe.cin.petcare.dados.repositorio.medico.InterfaceRepositorioMedicos;
+import br.ufpe.cin.petcare.dados.repositorio.pagamento.InterfaceRepositorioPagamentos;
 import br.ufpe.cin.petcare.dados.repositorio.pet.InterfaceRepositorioPets;
 import br.ufpe.cin.petcare.dados.repositorio.procedimento.InterfaceRepositorioProcedimentos;
 import br.ufpe.cin.petcare.dados.repositorio.usuario.InterfaceRepositorioUsuarios;
@@ -16,6 +17,8 @@ import br.ufpe.cin.petcare.negocio.cadastro.comanda.CadastroComanda;
 import br.ufpe.cin.petcare.negocio.cadastro.comanda.Comanda;
 import br.ufpe.cin.petcare.negocio.cadastro.medico.CadastroMedico;
 import br.ufpe.cin.petcare.negocio.cadastro.medico.Medico;
+import br.ufpe.cin.petcare.negocio.cadastro.pagamento.CadastroPagamento;
+import br.ufpe.cin.petcare.negocio.cadastro.pagamento.Pagamento;
 import br.ufpe.cin.petcare.negocio.cadastro.pet.CadastroPet;
 import br.ufpe.cin.petcare.negocio.cadastro.pet.Pet;
 import br.ufpe.cin.petcare.negocio.cadastro.procedimento.CadastroProcedimento;
@@ -27,6 +30,7 @@ import br.ufpe.cin.petcare.negocio.controlador.ControladorAtendimento;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorComanda;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorGerarComanda;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorMedico;
+import br.ufpe.cin.petcare.negocio.controlador.ControladorPagamento;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorPet;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorProcedimento;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorUsuario;
@@ -41,6 +45,7 @@ public class Fachada {
     private ControladorProcedimento controladorProcedimento;
     private ControladorMedico controladorMedico;
     private ControladorComanda controladorComanda;
+    private ControladorPagamento controladorPagamento;
 
     private Fachada(ApplicationContext context) {
         // Fábrica
@@ -80,6 +85,11 @@ public class Fachada {
 
         // Comanda
         this.controladorComanda = new ControladorComanda(cadastroComanda);
+
+        // Pagamento
+        InterfaceRepositorioPagamentos repositorioPagamentos = fabrica.criarRepositorioPagamentos(context);
+        CadastroPagamento cadastroPagamento = new CadastroPagamento(repositorioPagamentos);
+        this.controladorPagamento = new ControladorPagamento(cadastroPagamento);
     }
 
     public static Fachada getInstance(ApplicationContext context) {
@@ -164,5 +174,13 @@ public class Fachada {
 
     public void encerrarComanda(Long Id) {
         this.controladorComanda.encerrarComanda(Id);
+    }
+
+    public Pagamento inserirPagamento(Pagamento pagamento) {
+        return this.controladorPagamento.inserir(pagamento);
+    }
+
+    public Comanda buscarComanda(Long id) {
+        return this.controladorComanda.buscarComanda(id);
     }
 }

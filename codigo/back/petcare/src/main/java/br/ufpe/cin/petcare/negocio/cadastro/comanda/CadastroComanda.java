@@ -22,4 +22,8 @@ public class CadastroComanda {
 	public void encerrarComanda(Long id) {
 		this.repositorioComandas.encerrarComanda(id);
 	}
+
+	public Comanda buscarComanda(Long id) {
+		return this.repositorioComandas.buscarComanda(id);
+	}
 }

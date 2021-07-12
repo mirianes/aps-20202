@@ -26,4 +26,9 @@ public class RepositorioComandasBDR implements InterfaceRepositorioComandas {
 	public void encerrarComanda(Long Id) {
 		this.comandaDAO.encerrarComanda(Id);
 	}
+
+	@Override
+	public Comanda buscarComanda(Long id) {
+		return this.comandaDAO.getById(id);
+	}
 }

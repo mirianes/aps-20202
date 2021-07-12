@@ -8,4 +8,5 @@ public interface InterfaceRepositorioComandas {
 	public Comanda inserir(Comanda comanda);
 	public List<Comanda> buscarComandasPeloPetId(Long petId);
 	public void encerrarComanda(Long Id);
+	public Comanda buscarComanda(Long id);
 }

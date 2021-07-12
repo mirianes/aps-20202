@@ -1,5 +1,6 @@
 package br.ufpe.cin.petcare.comunicacao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufpe.cin.petcare.comunicacao.requestBody.comanda.BuscarComandaPeloPetIdBody;
 import br.ufpe.cin.petcare.comunicacao.requestBody.comanda.EncerrarComandaBody;
+import br.ufpe.cin.petcare.comunicacao.requestBody.pagamento.InserirPagamentoBody;
 import br.ufpe.cin.petcare.negocio.cadastro.comanda.Comanda;
+import br.ufpe.cin.petcare.negocio.cadastro.pagamento.Pagamento;
 import br.ufpe.cin.petcare.negocio.fachada.Fachada;
+
 
 @RestController
 @RequestMapping("/pagamento")
@@ -36,5 +40,19 @@ public class PagamentoRestController {
         Long id = body.getId();
 
         this.fachada.encerrarComanda(id);
+    }
+
+    @PostMapping("inserirPagamento")
+    public void inserirPagamento(@RequestBody InserirPagamentoBody body) throws Exception {
+        Date data = body.getData();
+        double valor = body.getValor();
+        int numeroParcelas = body.getNumeroParcelas();
+        Long comandaId = body.getComandaId();
+
+        Comanda comanda = this.fachada.buscarComanda(comandaId);
+
+        Pagamento pagamento = new Pagamento(comanda, valor, numeroParcelas, data);
+
+        this.fachada.inserirPagamento(pagamento);
     }
 }

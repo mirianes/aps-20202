@@ -21,6 +21,13 @@ public class Pagamento {
 	private int numeroParcelas;
 	private Date data;
 
+	public Pagamento(Comanda comanda, double valor, int numeroParcelas, Date data) {
+		this.comanda = comanda;
+		this.valor = valor;
+		this.numeroParcelas = numeroParcelas;
+		this.data = data;
+	}
+
 	public Long getId() {
 		return Id;
 	}
