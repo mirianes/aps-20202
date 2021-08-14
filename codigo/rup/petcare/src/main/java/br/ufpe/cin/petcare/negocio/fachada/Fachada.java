@@ -34,6 +34,7 @@ import br.ufpe.cin.petcare.negocio.controlador.ControladorPagamento;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorPet;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorProcedimento;
 import br.ufpe.cin.petcare.negocio.controlador.ControladorUsuario;
+import br.ufpe.cin.petcare.negocio.fabrica.FabricaAbstrataRepositorio;
 import br.ufpe.cin.petcare.negocio.fabrica.FabricaRepositorioBDR;
 
 public class Fachada {
@@ -49,7 +50,7 @@ public class Fachada {
 
     private Fachada(ApplicationContext context) {
         // Fábrica
-        FabricaRepositorioBDR fabrica = new FabricaRepositorioBDR();
+        FabricaAbstrataRepositorio fabrica = new FabricaRepositorioBDR();
 
         // Usuário
         InterfaceRepositorioUsuarios repositorioUsuarios = fabrica.criarRepositorioUsuarios(context);

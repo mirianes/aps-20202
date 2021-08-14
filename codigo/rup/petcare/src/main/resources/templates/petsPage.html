@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <h6>Selecione o Pet</h6>
+        
+        <li th:each="pet: ${pets}">
+            <p th:text="${pet.nome}"></p>
+        </li>
+    </body>
+</html>

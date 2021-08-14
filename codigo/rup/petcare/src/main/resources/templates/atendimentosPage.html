@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <style>
+            .searchbar {
+                padding: 4px 6px;
+            }
+
+            .btn {
+                background-color: DodgerBlue;
+                border: none;
+                color: white;
+                padding: 8px 12px;
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            .rowTablePet {
+                cursor: pointer;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                $('#buscarPetForm').click(function () {
+                    var form = $('#buscarPet')
+    
+                    $.ajax({
+                        url: form.attr("action"),
+                        data: form.serialize(),
+                        type: 'post',
+                        success: function (data) {
+                            for(var i = 0; i < data.length; i++) {
+                                const element = data[i]
+                                $("#bodyPetsTable").append(`
+                                    <tr class="rowTablePet">
+                                        <td id="id">${element.id}</td>
+                                        <td id="nome">${element.nome}</td>
+                                        <td id="tutorNome">${element.tutor.nome}</td>
+                                    </tr>
+                                `)
+                            }
+                        }
+                    })
+                })
+            
+                $('div.petsList table').delegate('tr', 'click', function() {
+                    const td = $(this).children('#id')
+                    const petID = td[0].innerText
+
+                    /*$.ajax({
+                        url: '/gerarComanda/listarAtendimentos',
+                        data: {
+                            token: "123"
+                        }
+                    }) */
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <h2>Atendimentos</h2>
+
+            <div>
+                <form id="buscarPet" method="POST" th:action="@{/pet/buscar/}" th:object="${buscarPetNomeBody}">
+                    <input type="text" placeholder="Token" class="searchbar" th:field="*{token}">
+                    <input type="text" placeholder="Nome do Pet" class="searchbar" th:field="*{nome}">
+                    <button type="button" class="btn" id="buscarPetForm"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="test"></div>
+            <div class="petsList">
+                <table id="petsTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pet</th>
+                            <th>Tutor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyPetsTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

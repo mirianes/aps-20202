@@ -28,6 +28,10 @@ public class Pet {
 
 	public Pet() {}
 
+	public Long getID() {
+		return ID;
+	}
+
 	public String getNome() {
 		return nome;
 	}

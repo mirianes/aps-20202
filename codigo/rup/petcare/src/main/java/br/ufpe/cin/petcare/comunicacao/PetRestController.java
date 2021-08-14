@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +45,7 @@ public class PetRestController {
     }
 
     @PostMapping("buscar")
-    public List<Pet> buscarPet(@RequestBody BuscarPetNomeBody body) throws Exception {
+    public List<Pet> buscarPet(Model model, @ModelAttribute BuscarPetNomeBody body) throws Exception {
         String token = body.getToken();
         String nome = body.getNome();
 

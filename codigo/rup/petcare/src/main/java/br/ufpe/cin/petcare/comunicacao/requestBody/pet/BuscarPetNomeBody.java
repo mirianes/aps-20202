@@ -11,4 +11,12 @@ public class BuscarPetNomeBody {
     public String getNome() {
         return this.nome;
     }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
