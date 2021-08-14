@@ -1,0 +1,12 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: comanda
+          uri: lb://comanda
+          predicates:
+          - Path=/comanda/**
