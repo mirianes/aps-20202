@@ -12,10 +12,10 @@ import org.springframework.data.repository.query.Param;
 public interface ComandaDAO extends JpaRepository<Comanda, Long> {
 
     @Query("SELECT c FROM Comanda c WHERE id_pet = :idPet AND encerrada = false")
-    List<Comanda> buscarComandasPeloIDPet(@Param("idPet") Long idPet);
+    List<Comanda> buscarPeloIDPet(@Param("idPet") Long idPet);
 
     @Transactional
     @Modifying
     @Query("UPDATE Comanda SET data_pagamento = now(), encerrada = true WHERE numero = :numero")
-    void encerrarComanda(@Param("numero") String numero);
+    void encerrar(@Param("numero") String numero);
 }

@@ -21,11 +21,11 @@ public class RepositorioComandas implements InterfaceRepositorioComandas {
 
     @Override
     public List<Comanda> listar(Long idPet) {
-        return this.comandaDAO.buscarComandasPeloIDPet(idPet);
+        return this.comandaDAO.buscarPeloIDPet(idPet);
     }
 
     @Override
     public void encerrar(String numeroComanda) {
-        this.comandaDAO.encerrarComanda(numeroComanda);
+        this.comandaDAO.encerrar(numeroComanda);
     }
 }
