@@ -33,4 +33,8 @@ public class Fachada {
     public List<Pet> listar() {
         return this.controladorPet.listar();
     }
+
+    public List<Pet> listar(Long idTutor) {
+        return this.controladorPet.listar(idTutor);
+    }
 }

@@ -23,4 +23,9 @@ public class RepositorioPets implements InterfaceRepositorioPets {
     public List<Pet> listar() {
         return this.petDAO.findAll();
     }
+
+    @Override
+    public List<Pet> listar(Long idTutor) {
+        return this.petDAO.listar(idTutor);
+    }
 }
