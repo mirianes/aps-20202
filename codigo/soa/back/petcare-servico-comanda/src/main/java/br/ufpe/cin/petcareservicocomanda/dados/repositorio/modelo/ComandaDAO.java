@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface ComandaDAO extends JpaRepository<Comanda, Long> {
 
-    @Query("SELECT c FROM Comanda c WHERE pet_id = :idPet")
+    @Query("SELECT c FROM Comanda c WHERE id_pet = :idPet AND encerrada = false")
     List<Comanda> buscarComandasPeloIDPet(@Param("idPet") Long idPet);
 
     @Transactional

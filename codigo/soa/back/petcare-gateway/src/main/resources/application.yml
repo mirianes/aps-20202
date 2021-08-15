@@ -10,3 +10,11 @@ spring:
           uri: lb://comanda
           predicates:
           - Path=/comanda/**
+        - id: pet
+          uri: lb://pet
+          predicates:
+          - Path=/pet/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.17:8761/eureka/

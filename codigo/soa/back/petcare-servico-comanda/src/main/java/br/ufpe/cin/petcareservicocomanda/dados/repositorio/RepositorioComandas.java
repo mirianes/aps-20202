@@ -3,10 +3,12 @@ package br.ufpe.cin.petcareservicocomanda.dados.repositorio;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.ufpe.cin.petcareservicocomanda.dados.repositorio.modelo.Comanda;
 import br.ufpe.cin.petcareservicocomanda.dados.repositorio.modelo.ComandaDAO;
 
+@Component
 public class RepositorioComandas implements InterfaceRepositorioComandas {
 
     @Autowired

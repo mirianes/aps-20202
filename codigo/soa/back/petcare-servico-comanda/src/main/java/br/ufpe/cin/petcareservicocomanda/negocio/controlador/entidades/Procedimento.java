@@ -1,28 +1,20 @@
 package br.ufpe.cin.petcareservicocomanda.negocio.controlador.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-@Entity
 public class Procedimento {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long ID;
     public String protocolo;
-    @OneToOne
-    public Pet pet;
+    public Long idPet;
     public boolean concluido;
+    public double valor;
     public boolean pago;
 
-    public Procedimento(Long ID, String protocolo, Pet pet, boolean concluido, boolean pago) {
+    public Procedimento(Long ID, String protocolo, Long idPet, boolean concluido, double valor, boolean pago) {
         this.ID = ID;
         this.protocolo = protocolo;
-        this.pet = pet;
+        this.idPet = idPet;
         this.concluido = concluido;
+        this.valor = valor;
         this.pago = pago;
     }
 
@@ -42,12 +34,12 @@ public class Procedimento {
         this.protocolo = protocolo;
     }
 
-    public Pet getPet() {
-        return this.pet;
+    public Long getIDPet() {
+        return this.idPet;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setIDPet(Long idPet) {
+        this.idPet = idPet;
     }
 
     public boolean getConcluido() {
@@ -56,6 +48,14 @@ public class Procedimento {
 
     public void setConcluido(boolean concluido) {
         this.concluido = concluido;
+    }
+
+    public double getValor() {
+        return this.valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public boolean getPago() {

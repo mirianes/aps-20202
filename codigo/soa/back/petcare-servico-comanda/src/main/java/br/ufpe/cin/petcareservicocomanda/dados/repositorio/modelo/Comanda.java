@@ -3,16 +3,11 @@ package br.ufpe.cin.petcareservicocomanda.dados.repositorio.modelo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-
-import br.ufpe.cin.petcareservicocomanda.negocio.controlador.entidades.Cliente;
-import br.ufpe.cin.petcareservicocomanda.negocio.controlador.entidades.Pet;
-import br.ufpe.cin.petcareservicocomanda.negocio.controlador.entidades.Procedimento;
 
 @Entity
 public class Comanda {
@@ -21,12 +16,10 @@ public class Comanda {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long ID;
 	private String numero;
-	@OneToOne
-	private Cliente tutor;
-	@OneToOne
-	private Pet pet;
-	@ManyToMany
-	private List<Procedimento> procedimentos;
+	private Long idTutor;
+	private Long idPet;
+	@ElementCollection
+	private List<Long> idProcedimentos;
 	private double valorTotal;
 	private Date dataEntrada;
 	private Date dataVencimento;
@@ -34,13 +27,13 @@ public class Comanda {
 	private boolean encerrada;
 	
 	public Comanda(
-		String numero, Cliente tutor, Pet pet, List<Procedimento> procedimentos, double valorTotal,
+		String numero, Long idTutor, Long idPet, List<Long> idProcedimentos, double valorTotal,
 		Date dataEntrada, Date dataVencimento, Date dataPagamento, boolean encerrada
 	) {
 		this.numero = numero;
-		this.tutor = tutor;
-		this.pet = pet;
-		this.procedimentos = procedimentos;
+		this.idTutor = idTutor;
+		this.idPet = idPet;
+		this.idProcedimentos = idProcedimentos;
 		this.valorTotal = valorTotal;
 		this.dataEntrada = dataEntrada;
 		this.dataVencimento = dataVencimento;
@@ -66,28 +59,28 @@ public class Comanda {
 		this.numero = numero;
 	}
 
-	public Cliente getTutor() {
-		return tutor;
+	public Long getIDTutor() {
+		return idTutor;
 	}
 
-	public void setTutor(Cliente tutor) {
-		this.tutor = tutor;
+	public void setIDTutor(Long idTutor) {
+		this.idTutor = idTutor;
 	}
 
-	public Pet getPet() {
-		return pet;
+	public Long getIDPet() {
+		return idPet;
 	}
 
-	public void setPet(Pet pet) {
-		this.pet = pet;
+	public void setIDPet(Long idPet) {
+		this.idPet = idPet;
 	}
 
-	public List<Procedimento> getProcedimentos() {
-		return procedimentos;
+	public List<Long> getIDProcedimentos() {
+		return idProcedimentos;
 	}
 
-	public void setProcedimentos(List<Procedimento> procedimentos) {
-		this.procedimentos = procedimentos;
+	public void setIDProcedimentos(List<Long> idProcedimentos) {
+		this.idProcedimentos = idProcedimentos;
 	}
 
 	public double getValorTotal() {
