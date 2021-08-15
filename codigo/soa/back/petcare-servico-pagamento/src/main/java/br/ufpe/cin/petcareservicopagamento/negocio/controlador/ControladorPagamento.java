@@ -41,4 +41,18 @@ public class ControladorPagamento {
         
     	return response.getStatusCodeValue() == HttpStatus.OK.value();
     }
+
+    public void encerrarComanda(Long numeroComanda) {
+    	HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, Long> map= new LinkedMultiValueMap<String, Long>();
+        
+        map.add("numeroComanda", numeroComanda);
+
+        HttpEntity<MultiValueMap<String, Long>> request = new HttpEntity<MultiValueMap<String, Long>>(map, headers);
+        
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put("http://0.0.0.0:8000/comanda/encerrar", request , String.class);
+    }
 }

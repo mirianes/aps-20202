@@ -12,13 +12,13 @@ public class Pagamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long Id;
-	private Long idComanda;
+	private Long numeroComanda;
 	private double valor;
 	private int numeroParcelas;
 	private Date data;
 
-	public Pagamento(Long idComanda, double valor, int numeroParcelas, Date data) {
-		this.idComanda = idComanda;
+	public Pagamento(Long numeroComanda, double valor, int numeroParcelas, Date data) {
+		this.numeroComanda = numeroComanda;
 		this.valor = valor;
 		this.numeroParcelas = numeroParcelas;
 		this.data = data;
@@ -29,7 +29,7 @@ public class Pagamento {
 	}
 
 	public Long getIdComanda() {
-		return idComanda;
+		return numeroComanda;
 	}
 
 	public double getValor() {

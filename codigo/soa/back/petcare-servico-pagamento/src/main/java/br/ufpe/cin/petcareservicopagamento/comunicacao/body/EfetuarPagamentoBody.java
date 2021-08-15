@@ -3,7 +3,7 @@ package br.ufpe.cin.petcareservicopagamento.comunicacao.body;
 import java.util.Date;
 
 public class EfetuarPagamentoBody {
-    private Long idComanda;
+    private Long numeroComanda;
     private double valor;
     private int numeroParcelas;
     private Date data;
@@ -11,8 +11,8 @@ public class EfetuarPagamentoBody {
     private String validadeCartao;
     private int codigoCartao;
 
-    public Long getIdComanda() {
-        return this.idComanda;
+    public Long getNumeroComanda() {
+        return this.numeroComanda;
     }
 
     public String getNumeroCartao() {
