@@ -25,13 +25,16 @@ public class InterfaceServicoPet {
     
     @GetMapping("buscarPeloNome")
     public List<Pet> buscar(@RequestParam("nome") String nome) {
-        System.out.println(nome);
         return this.fachada.buscar(nome);
     }
 
     @GetMapping("listar")
     public List<Pet> listar() {
-        System.out.println("aqui");
         return this.fachada.listar();
+    }
+
+    @GetMapping("listarPeloIDTutor")
+    public List<Pet> listar(Long idTutor) {
+        return this.fachada.listar(idTutor);
     }
 }

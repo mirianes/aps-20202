@@ -8,4 +8,5 @@ public interface InterfaceRepositorioPets {
     
     public List<Pet> buscar(String nome);
     public List<Pet> listar();
+    public List<Pet> listar(Long idTutor);
 }

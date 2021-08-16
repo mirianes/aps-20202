@@ -10,4 +10,7 @@ public interface PetDAO extends JpaRepository<Pet, Long> {
     
     @Query("SELECT p FROM Pet p WHERE UPPER(nome) LIKE UPPER(concat('%', :nome, '%'))")
     List<Pet> buscar(@Param("nome") String nome);
+
+    @Query("SELECT p FROM Pet p WHERE id_tutor = :idTutor")
+    List<Pet> listar(@Param("idTutor") Long idTutor);
 }

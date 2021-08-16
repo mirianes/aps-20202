@@ -27,7 +27,7 @@ public class InterfaceServicoPagamento {
 
     @PostMapping("/efetuarPagamento")
     public Pagamento efetuarPagamento(@RequestBody EfetuarPagamentoBody body) {
-        Long idComanda = body.getIdComanda();
+        Long numeroComanda = body.getNumeroComanda();
         double valor = body.getValor();
         int numeroParcelas = body.getNumeroParcelas();
         Date data = body.getData();
@@ -37,10 +37,14 @@ public class InterfaceServicoPagamento {
         
         Cartao cartao = new Cartao(numeroCartao, validadeCartao, codigoCartao);
 
-        Pagamento pagamento = new Pagamento(idComanda, valor, numeroParcelas, data);
+        Pagamento pagamento = new Pagamento(numeroComanda, valor, numeroParcelas, data);
         
         this.fachada.enviarPagamento(pagamento, cartao);
-
-        return this.fachada.inserir(pagamento);
+        
+        Pagamento response = this.fachada.inserir(pagamento);
+        
+        this.fachada.encerrarComanda(numeroComanda);
+        
+        return response;
     }
 }

@@ -32,4 +32,8 @@ public class Fachada {
     public boolean enviarPagamento(Pagamento pagamento, Cartao cartao) {
     	return this.controladorPagamento.enviarPagamento(pagamento, cartao);
     }
+
+    public void encerrarComanda(Long idComanda) {
+    	this.controladorPagamento.encerrarComanda(idComanda);
+    }
 }

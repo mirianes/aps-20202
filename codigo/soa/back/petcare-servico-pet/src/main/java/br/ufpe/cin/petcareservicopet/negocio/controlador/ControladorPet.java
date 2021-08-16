@@ -20,4 +20,8 @@ public class ControladorPet {
     public List<Pet> listar() {
         return this.repositorioPets.listar();
     }
+
+    public List<Pet> listar(Long idTutor) {
+        return this.repositorioPets.listar(idTutor);
+    }
 }
