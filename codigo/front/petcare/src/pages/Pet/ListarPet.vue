@@ -33,7 +33,7 @@
               Nome: {{ pet.nome }} <br> Data Nascimento:{{pet.dataNascimento}} <br> Sexo: {{pet.sexo}} <br> Tipo: {{pet.tipo}} <br> idTutor: {{pet.idTutor}}
             </td>
             <td>
-              <b-button  v-b-modal.modal-1 @click="(idPetField = pet.ID), (flagField = true)" >
+              <b-button  @click="(idPetField = pet.ID), (flagField = true)" v-b-modal.modal-1 >
                 <b-icon icon="card-checklist"></b-icon>
               </b-button>
             </td>
